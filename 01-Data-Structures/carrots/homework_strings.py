@@ -46,8 +46,8 @@ dna = open('./files/dna.fasta', 'r')
 
 def make_bar_chart(num_of_nucleotides):
     nucleotides = ['A', 'C', 'G', 'T']
-    x1 = nucleotides - 0.2
-    x2 = nucleotides + 0.2
+    x1 = len(nucleotides) - 0.2
+    x2 = len(nucleotides) + 0.2
     y1 = dict.values(num_of_nucleotides[0])
     y2 = dict.values(num_of_nucleotides[1])
     
@@ -83,7 +83,6 @@ def count_nucleotides_for_gene(curr_line, output_file, i):
     return gene_dict
 
 def count_nucleotides(dna):
-
     num_of_nucleotides = []
     output_file = open('./files/num_of_nucleotides.txt', 'w')
 
