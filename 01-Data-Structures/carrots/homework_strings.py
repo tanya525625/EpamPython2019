@@ -32,14 +32,11 @@
 P.S. За незакрытый файловый дескриптор - караем штрафным дезе.
 
 """
-# import matplotlib.pyplot as plt
 # read the file dna.fasta
 import re 
 dna = open('./files/dna.fasta', 'r')
-rna = open('./files/translation_from_dna_to_rna.txt', 'r')
 
 def split_file(dna):
-    dna = open('./files/dna.fasta', 'r')
     lines = dna.readlines()
     gene_nucleotides = ''
     for i in lines:
@@ -51,6 +48,7 @@ def split_file(dna):
 
 def translate_from_dna_to_rna(dna):
     rna = []
+    dna = open('./files/dna.fasta', 'r')
     splitted_lines = split_file(dna)
     output_file = open('./files/translation_from_dna_to_rna.txt', 'w')
     
@@ -62,31 +60,13 @@ def translate_from_dna_to_rna(dna):
         curr_rna = curr_dna.replace('T', 'U')
         rna.append(curr_rna)
 
-        output_file.write(f'>{gene_name} \n')
+        output_file.write(f'>{gene_name}')
         output_file.write(f'{curr_rna} \n')
 
     output_file.close()
-    
+    dna.close()
+
     return rna
-
-
-# def make_bar_chart(num_of_nucleotides):
-#     nucleotides = ['A', 'C', 'G', 'T']
-#     x1 = len(nucleotides) - 0.2
-#     x2 = len(nucleotides) + 0.2
-#     y1 = dict.values(num_of_nucleotides[0])
-#     y2 = dict.values(num_of_nucleotides[1])
-    
-#     fig, ax = plt.subplots()
-#     ax.bar(x1, y1, width = 0.4)
-#     ax.bar(x2, y2, width = 0.4)
-
-#     ax.set_facecolor('seashell')
-#     fig.set_figwidth(12)    #  ширина Figure
-#     fig.set_figheight(6)    #  высота Figure
-#     fig.set_facecolor('floralwhite')
-
-#     plt.show()
 
 def count_nucleotides_for_gene(curr_line, output_file):
     nucleotides = ['A', 'C', 'G', 'T']
@@ -115,41 +95,50 @@ def count_nucleotides(dna):
         num_of_nucleotides.append(gene_dict)
 
     output_file.close()
-    dna.close()
 
     return num_of_nucleotides
 
 
 def translate_rna_to_protein(rna):
     rna_codon_table = open('./files/rna_codon_table.txt', 'r')
+    output_file = open('./files/translation_rna_to_protein.txt', 'w')
     codons = []
     new_values = []
     lines = rna_codon_table.readlines()
     
     for line in lines:
         line = line.replace('\n', '')
-        for codon in re.finditer(r'[U,A,C,G]{3}', line):
-            codons.append(codon[0])
-        for value in re.finditer(r'[^U,^A,^C,^G,^ ]*', line):
+        for codon in re.finditer(r'[U,A,C,G]{3}', line):    #finding codons
+            codons.append(codon[0])     
+            line = line.replace(codon[0], '')
+            
+        for value in re.finditer(r'[^ ]+', line):   #finding new codons' values 
             if value[0] != '':
                 new_values.append(value[0])
-    rules_to_translate = dict(zip(tuple(codons), tuple(new_values)))
-    #print(rules_to_translate)
 
-    rna_lines = rna.readlines()
-    print(rna_lines)
-    # curr_line = splitted_lines[i]
-    #     ind_name = curr_line.find('\n')
-    #     gene_name = str(curr_line)[:ind_name]
-    #     curr_dna =  str(curr_line)[ind_name:]
-    #     curr_rna = curr_dna.replace('T', 'U')
-    #     rna.append(curr_rna)
+    rules_to_translate = dict(zip(tuple(codons), tuple(new_values)))
     
+    protein = []
+    for i in range(len(rna)):
+        curr_protein = ''
+        j = 0
+        curr_str = rna[i].replace('\n', '')
+        while j < len(curr_str) - 3:
+            curr_codon = curr_str[j:j+3]
+            j += 3
+            curr_protein += rules_to_translate[curr_codon]
+            curr_protein += ' '
+        output_file.write(f'{curr_protein} \n')
+        protein.append(curr_protein)
     
-    #return protein
+    output_file.close()
+    rna_codon_table.close()
+
+    return protein
+
+
 num_of_nucleotides = count_nucleotides(dna)
-translate_from_dna_to_rna(dna)
+rna = translate_from_dna_to_rna(dna)
 translate_rna_to_protein(rna)
-# make_bar_chart(num_of_nucleotides)
 
 dna.close()
