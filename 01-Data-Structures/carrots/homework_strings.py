@@ -34,10 +34,8 @@ P.S. За незакрытый файловый дескриптор - кара�
 """
 # read the file dna.fasta
 import re 
-dna = open('./files/dna.fasta', 'r')
 
-def split_file(dna):
-    lines = dna.readlines()
+def split_file(lines):
     gene_nucleotides = ''
     for i in lines:
         gene_nucleotides += i
@@ -48,10 +46,9 @@ def split_file(dna):
 
 def translate_from_dna_to_rna(dna):
     rna = []
-    dna = open('./files/dna.fasta', 'r')
     splitted_lines = split_file(dna)
     output_file = open('./files/translation_from_dna_to_rna.txt', 'w')
-    
+
     for i in range(len(splitted_lines)):
         curr_line = splitted_lines[i]
         ind_name = curr_line.find('\n')
@@ -64,7 +61,6 @@ def translate_from_dna_to_rna(dna):
         output_file.write(f'{curr_rna} \n')
 
     output_file.close()
-    dna.close()
 
     return rna
 
@@ -101,10 +97,11 @@ def count_nucleotides(dna):
 
 def translate_rna_to_protein(rna):
     rna_codon_table = open('./files/rna_codon_table.txt', 'r')
+    lines = rna_codon_table.readlines()
+    rna_codon_table.close()
     output_file = open('./files/translation_rna_to_protein.txt', 'w')
     codons = []
     new_values = []
-    lines = rna_codon_table.readlines()
     
     for line in lines:
         line = line.replace('\n', '')
@@ -132,13 +129,12 @@ def translate_rna_to_protein(rna):
         protein.append(curr_protein)
     
     output_file.close()
-    rna_codon_table.close()
 
     return protein
 
-
-num_of_nucleotides = count_nucleotides(dna)
-rna = translate_from_dna_to_rna(dna)
-translate_rna_to_protein(rna)
-
+dna = open('./files/dna.fasta', 'r')
+lines = dna.readlines()
 dna.close()
+num_of_nucleotides = count_nucleotides(lines)
+rna = translate_from_dna_to_rna(lines)
+translate_rna_to_protein(rna)
