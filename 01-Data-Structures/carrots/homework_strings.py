@@ -33,6 +33,8 @@ P.S. За незакрытый файловый дескриптор - кара�
 
 """
 # read the file dna.fasta
+import matplotlib.pyplot as plt
+import numpy as np
 import re 
 
 def split_file(lines):
@@ -132,9 +134,36 @@ def translate_rna_to_protein(rna):
 
     return protein
 
+def make_chart(num_of_nucleotides):
+    x = []
+    y = []
+    fig, ax = plt.subplots()
+    size = len(num_of_nucleotides)
+
+    for i in range(size):
+        if i == 0:
+            x.append(num_of_nucleotides[i].keys())
+        else:
+            x.append(np.arange(0, len(num_of_nucleotides[i])) + 0.2*i)
+        y.append(num_of_nucleotides[i].values())
+        ax.bar(x[i], y[i], width = 0.2)
+
+    ax.set_facecolor('whitesmoke')
+    fig.set_figwidth(10)
+    fig.set_figheight(5)   
+
+    plt.show()
+
 dna = open('./files/dna.fasta', 'r')
 lines = dna.readlines()
 dna.close()
 num_of_nucleotides = count_nucleotides(lines)
 rna = translate_from_dna_to_rna(lines)
 translate_rna_to_protein(rna)
+make_chart(num_of_nucleotides)
+
+
+
+
+
+
