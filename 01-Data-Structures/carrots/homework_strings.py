@@ -161,9 +161,3 @@ num_of_nucleotides = count_nucleotides(lines)
 rna = translate_from_dna_to_rna(lines)
 translate_rna_to_protein(rna)
 make_chart(num_of_nucleotides)
-
-
-
-
-
-
