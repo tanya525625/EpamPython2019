@@ -1,0 +1,48 @@
+Gewucrztraminer
+Average price is 26.28347280334728
+Max price is 197
+Min price is 6
+Most common region is Alsace
+Most common country is France
+Average score is 88.5909090909091
+====================
+Riesling
+Average price is 32.012487411883185
+Max price is 775
+Min price is 5
+Most common region is Finger Lakes
+Most common country is Germany
+Average score is 89.45029917004439
+====================
+Merlot
+Average price is 29.5342062193126
+Max price is 625
+Min price is 4
+Most common region is Columbia Valley
+Most common country is US
+Average score is 87.20452342487884
+====================
+Madeira Blend
+Average price is 45.5
+Max price is 49
+Min price is 42
+Most common region is California Other
+Most common country is Portugal
+Average score is 88.0
+====================
+Tempranillo
+Average price is 31.147421524663677
+Max price is 600
+Min price is 4
+Most common region is Rioja
+Most common country is Spain
+Average score is 87.51024930747923
+====================
+Red Blend
+Average price is 35.88334712208959
+Max price is 500
+Min price is 5
+Most common region is Columbia Valley
+Most common country is Italy
+Average score is 88.37950727883539
+====================
