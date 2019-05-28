@@ -1,0 +1,75 @@
+{"statistics": {
+	"wine": {	
+		"Gewucrztraminer": {
+			"average_price":"26.28347280334728",
+			"min_price":"6",
+			"max_price":"197",
+			"max_score":"96",
+			"min_score":"80",
+			"most_common_region":"Alsace",
+			"most_common_country":"France",
+			"average_score":"88.5909090909091"
+			},
+		"Riesling": {
+			"average_price":"32.012487411883185",
+			"min_price":"5",
+			"max_price":"775",
+			"max_score":"98",
+			"min_score":"80",
+			"most_common_region":"Finger Lakes",
+			"most_common_country":"Germany",
+			"average_score":"89.45029917004439"
+			},
+		"Merlot": {
+			"average_price":"29.5342062193126",
+			"min_price":"4",
+			"max_price":"625",
+			"max_score":"100",
+			"min_score":"80",
+			"most_common_region":"Columbia Valley",
+			"most_common_country":"US",
+			"average_score":"87.20452342487884"
+			},
+		"Madeira Blend": {
+			"average_price":"45.5",
+			"min_price":"42",
+			"max_price":"49",
+			"max_score":"90",
+			"min_score":"86",
+			"most_common_region":"California Other",
+			"most_common_country":"Portugal",
+			"average_score":"88.0"
+			},
+		"Tempranillo": {
+			"average_price":"31.147421524663677",
+			"min_price":"4",
+			"max_price":"600",
+			"max_score":"97",
+			"min_score":"80",
+			"most_common_region":"Rioja",
+			"most_common_country":"Spain",
+			"average_score":"87.51024930747923"
+			},
+		"Red Blend": {
+			"average_price":"35.88334712208959",
+			"min_price":"5",
+			"max_price":"500",
+			"max_score":"99",
+			"min_score":"80",
+			"most_common_region":"Columbia Valley",
+			"most_common_country":"Italy",
+			"average_score":"88.37950727883539"
+			}
+
+},
+	"most_expensive_wine": ["Robert Weil 2013 Kiedrich Gru00e4fenberg Trockenbeerenauslese Riesling (Rheingau)", "Robert Weil 2012 Kiedrich Gru00e4fenberg Trockenbeerenauslese Riesling (Rheingau)", "Robert Weil 2015 Kiedrich Gru00e4fenberg Trockenbeerenauslese Riesling (Rheingau)", "Robert Weil 2014 Kiedrich Gru00e4fenberg Trockenbeerenauslese Riesling (Rheingau)"],
+	"cheapest_wine": ["Bandit NV Merlot (California)", "Terrenal 2010 Estate Bottled Tempranillo (Yecla)"],
+	"highest_score": ["Tenuta dellOrnellaia 2007 Masseto Merlot (Toscana)"],
+	"lowest_score": ["Rooster Hill 2007 Estate Gewucrztraminer (Finger Lakes)", "Emiliana 2009 Natura Gewucrztraminer (Rapel Valley)", "Rooster Hill 2007 Dry Riesling (Finger Lakes)", "Turning Leaf 2001 Reserve Riesling (Monterey)", "Longevity 2005 Merlot (Sierra Foothills)", "James Wyatt 2013 Merlot (Horse Heaven Hills)", "Quickfire 2008 Top Chef Merlot (Napa Valley)", "Tapiz 2006 Merlot (Mendoza)", "Flock by Smoking Loon 2007 Merlot (Napa Valley)", "Pietra Santa 2004 Merlot (Cienega Valley)", "Bocage 2006 Merlot (Monterey)", "De Martino 1999 Prima Reserva Merlot (Maipo Valley)", "Indomita 2009 Selected Varietal Merlot (Maipo Valley)", "Tortoise Creek 2011 Schoolhouse Cuvu00e9e Merlot (Clarksburg)", "Fattoria Giuseppe Savini 2011 Rondineto Merlot (Colli Aprutini)", "Snapping Turtle 2011 Merlot (California)", "Concannon 2008 Selected Vineyards Merlot (Central Coast)", "Fat Cat 2010 Merlot (California)", "Arauco 2011 Merlot (Central Valley)", "Alfasi 1998 Reserve Merlot (Maule Valley)", "Love 2015 Merlot (Vino de la Tierra de Castilla)", "Santa Julia 2007 Merlot (Mendoza)", "Vivencias 2008 V Tempranillo (Vino de Calidad de Valtiendas)", "Wise Villa 2011 Tempranillo (Sierra Foothills)", "Beronia 2007 Elaboraciu00f3n Especial  (Rioja)", "Sembro 2012 Vendimia Seleccionada  (Ribera del Duero)", "Ardales 2008 Organic Tempranillo (Vino de la Tierra de Castilla)", "Familia Montau00f1a 2015 Montau00f1a Tinto  (Rioja)", "Condado de Oriza 2007  Ribera del Duero", "Bodegas Franco-Espau00f1olas 2010 Royal  (Rioja)", "Rojo Mojo 2010 Tempranillo (La Mancha)", "Love 2015 Tempranillo (Vino de la Tierra de Castilla)", "Bodegas del Mundo 2010 Valdemoreda  (Rioja)", "Mano A Mano 2009 Manon Tempranillo (Vino de la Tierra de Castilla)", "Millu00e9simu00e9 2005 Scoprire Red (California)", "Casa Tiene Vista NV DeLuz Red (California)", "Millu00e9simu00e9 2008 Scopire Red (Santa Ynez Valley)", "Arrowhead Mountain 2008 Primary Red (Sonoma Valley)", "Spann Vineyards 2004 Twenty-Three Barrels Mo Jo Red (Sonoma County)", "Convento San Francisco 2008  Ribera del Duero", "Highland Hills Winery 2011 Lola Red (Ramona Valley)", "Monte De Oro 2009 Cuvee de Oro Red (Temecula Valley)", "Chozas Carrascal 2004 Las Ocho Red (Utiel-Requena)", "Hatcher 2005 Sewell Red (Calaveras County)", "Michael David 2005 Petite Petit Red (Lodi)", "Finca Constancia 2007 Red (Vino de la Tierra de Castilla)", "Spann Vineyards 2004 Mo Zin Red (Sonoma County)", "Agate Ridge 2007 Cascade Terrace Red Red (Rogue Valley)", "Cooper Vineyards NV Noche Sweet Table Wine Red (Virginia)", "Campo Marin 2006 Selecciu00f3n Crianza Red (Cariu00f1ena)", "Fog Hill NV Red (Napa County)", "Peirano 2009 The Other Red (Lodi)", "Conquista 2013 Oak Cask Red (Mendoza)", "San Pedro 2011 Epica Red (Central Valley)", "Mont Tauch 1998 Red (Fitou)", "J. Garcia Carrion 1997 Antau00f1o Crianza  (Rioja)", "Ca Momi 2007 Rosso Di California Red (California)", "Kumbaya NV Red (California)", "Sierra Norte 2012 Ananto Red (Utiel-Requena)"],
+	"most_active_commentator": "Michael Schachner",
+	"cheapest_coutry": ["Ukraine", 8.0],
+	"underrated_country": ["Macedonia", 86.0],
+	"most_expensive_country": ["Germany", 43.64659977703456],
+	"most_rated_country": ["Austria", 91.21238938053098]
+	}
+}
