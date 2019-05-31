@@ -24,5 +24,45 @@
 # возможности модуля inspect.
 
 # Попробуйте применить эту функцию на написанных функциях из дз1, дз2, дз3. К функциям min, max, any() ?
+import inspect
 
-def modified_func(func, fixated_args, fixated_kwargs):
+
+def base(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+def modified_func(func, *fixated_args, **fixated_kwargs):
+    def new_func(*args, **kwargs):
+        """
+        A func implementation of <name>
+        with pre-applied arguments being:
+        <fixated_args>
+        <fixated_kwargs>
+        source_code: <source_code>
+        """
+        new_func.__name__ = 'func_' + func.__name__
+        source_code = inspect.getsource(new_func)
+
+        new_func.__doc__ = new_func.__doc__.replace('<name>', new_func.__name__)
+        new_func.__doc__ = new_func.__doc__.replace('<fixated_args>', str(fixated_args))
+        new_func.__doc__ = new_func.__doc__.replace('<fixated_kwargs>', str(fixated_kwargs))
+        new_func.__doc__ = new_func.__doc__.replace('<source_code>', source_code)
+
+        fr = inspect.currentframe()
+        all_func_args = inspect.getargvalues(fr)
+        varargs = all_func_args.varargs
+        keywords = all_func_args.keywords
+        func_args = all_func_args.locals[varargs]
+        func_kwargs = all_func_args.locals[keywords]
+
+        new_args = list(func_args)
+        new_kwargs = func_kwargs
+        new_args.extend(fixated_args)
+        new_kwargs.update(fixated_kwargs)
+        base(*new_args, **new_kwargs)
+
+    return new_func
+
+mod_func = modified_func(base, 3, 9, 5, var1 = 8, var2 = 9)
+mod_func(27, var2 = 6, var4 = 24)
+mod_func()
