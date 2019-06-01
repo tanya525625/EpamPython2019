@@ -3,3 +3,4 @@ def is_armstrong(number):
   
 assert is_armstrong(153) == True, 'Число Армстронга'
 assert is_armstrong(10) == False, 'Не число Армстронга'
+
