@@ -14,7 +14,6 @@ def make_cache(bound):
             cache = []
             cache.append(func(*args, **kwargs))
             for i in range(len(cache)):
-                print(time.time() - cache[i]['time'])
                 if (time.time() - cache[i]['time']) > bound:
                     cache.pop(0)
             return cache
@@ -36,5 +35,4 @@ def slow_function(type_of_payment, customer_name):
     return product
 
 
-slow_function('card', 'Ivanov')
 print(slow_function('card', 'Ivanov'))
