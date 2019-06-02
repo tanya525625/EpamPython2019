@@ -19,13 +19,18 @@ import functools
 
 
 def print_result(func):
-    # Place for new decorator
-    def wrapper(*args, **kwargs):
-        """Function-wrapper which print result of an original function"""
-        result = func(*args, **kwargs)
-        print(result)
-        return result
-    return wrapper
+    def new_decorator(*args, **kwargs):
+        new_decorator.__name__ = func.__name__
+        new_decorator.__doc__ = func.__doc__
+        new_decorator.__original_func = func
+        
+        def wrapper():
+            """Function-wrapper which print result of an original function"""
+            result = func(*args, **kwargs)
+            print(result)
+            return result
+        return wrapper
+    return new_decorator
 
 
 @print_result
@@ -40,6 +45,7 @@ if __name__ == '__main__':
 
     print(custom_sum.__doc__)
     print(custom_sum.__name__)
+    print(custom_sum.__original_func)
     without_print = custom_sum.__original_func
 
     # the result returns without printing
