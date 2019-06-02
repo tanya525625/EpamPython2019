@@ -25,7 +25,7 @@ def slow_function(type_of_payment, customer_name):
     """
     A func for storaging information about purchase
     in the shop. If the warranty expires, the information
-    can be deleted.
+    will be deleted.
     """
     product = {
         'type_of_payment': type_of_payment,
