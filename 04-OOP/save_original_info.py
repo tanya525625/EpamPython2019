@@ -1,39 +1,48 @@
-# Переписать функцию make_cache, которая сохраняет
-# результаты предыдущих вызовов оборачиваемой функции,
-# таким образом, чтобы она сохраняла результаты в своем
-# хранилищe на определенное время, которое передается
-# параметром (аргументом) в декоратор.
+"""
+Написать декоратор который позволит сохранять информацию из
+исходной функции (__name__ and __doc__), а так же сохранит саму
+исходную функцию в атрибуте __original_func
+print_result изменять нельзя, за исключением добавления вашего
+декоратора на место отведенное под него
+В конечном варанте кода будет вызываться AttributeError при custom_sum.__original_func
+Это корректное поведение
+Ожидаемый результат:
+print(custom_sum.__doc__)  # 'This function can sum any objects which have __add___'
+print(custom_sum.__name__)  # 'custom_sum'
+print(custom_sum.__original_func)  # <function custom_sum at <some_id>>
+"""
 
-# Плюс придумать некоторый полезный юзкейс 
-# и заимплементировать функцию slow_function
-import time
-
-
-def make_cache(bound):
-    def modify_func(func):
-        def new_function(*args, **kwargs):
-            cache = []
-            cache.append(func(*args, **kwargs))
-            for i in range(len(cache)):
-                if (time.time() - cache[i]['time']) > bound:
-                    cache.pop(0)
-            return cache
-        return new_function
-    return modify_func
+import functools
 
 
-@make_cache(30)
-def slow_function(type_of_payment, customer_name):
-    """
-    A func for storaging information about purchase
-    in the shop. If the warranty expires, the information
-    will be deleted.
-    """
-    product = {
-        'type_of_payment': type_of_payment,
-        'customer': customer_name, 
-        'time': time.time()
-        }
-    return product
+def print_result(func):
+    def new_decorator(*args, **kwargs):
+        new_decorator.__name__ = func.__name__
+        new_decorator.__doc__ = func.__doc__
+        new_decorator.__original_func = func
+        
+        def wrapper(*args, **kwargs):
+            """Function-wrapper which print result of an original function"""
+            result = func(*args, **kwargs)
+            print(result)
+            return result
+        return wrapper
+    return new_decorator
 
-print(slow_function('card', 'Ivanov'))
+@print_result
+def custom_sum(*args):
+    """This function can sum any objects which have __add___"""
+    return functools.reduce(lambda x, y: x + y, args)
+
+
+if __name__ == '__main__':
+    custom_sum([1, 2, 3], [4, 5])
+    custom_sum(1, 2, 3, 4)
+
+    print(custom_sum.__doc__)
+    print(custom_sum.__name__)
+    print(custom_sum.__original_func)
+    without_print = custom_sum.__original_func
+
+    # the result returns without printing
+    without_print(1, 2, 3, 4)
