@@ -56,12 +56,10 @@ class Student:
         self.last_name = last_name
         self.first_name = first_name
         
-    def do_homework(cls, hw: Homework):
+    def do_homework(self, hw: Homework):
         if hw.is_active():
             return hw
-        else:
-            print('You are late')
-            return None
+        print('You are late')
 
 
 class Teacher:
@@ -69,7 +67,7 @@ class Teacher:
         self.last_name = last_name
         self.first_name = first_name
         
-    def create_homework(cls, text, deadline):
+    def create_homework(self, text, deadline):
         return Homework(text, deadline)
 
 if __name__ == '__main__':
