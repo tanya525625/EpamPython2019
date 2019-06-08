@@ -1,18 +1,28 @@
-# Find the sum of all the multiples of 3 or 5 below 1000.
-def find_sum(bound):
-    return sum(filter(lambda x: x % 3 == 0 or x % 5 == 0, range(bound)))
+from functools import reduce
 
-# Find the difference between the sum of the squares of the first 
-# one hundred natural numbers and the square of the sum.
+
+# problem 6
 def sum_squares(bound):
     return sum(range(bound+1))**2 - sum(x**2 for x in range(bound+1))
 
-#Find the sum of all the numbers that can be written 
-# as the sum of fifth powers of their digits.
-def sum_of_fifth_pow_of_numb(bound):
-    return sum(s for s in range(bound) if s == sum(int(x)**5 
-                                 for x in list(str(s)))) - 1    
 
-print(find_sum(1000))
-print(sum_of_fifth_pow_of_numb(500000))
+# problem 9
+def find_triplet(sum):
+    return [(a, b, sum-a-b) for a in range(1, sum) for b in range(1, sum)
+            if ((a**2 + b**2) == (sum-a-b)**2) and a < b]
+
+
+# problem 48
+def find_last_digits(bound):
+    return str(sum(i**i for i in range(bound+1)))[-10:]
+
+
+# problem 40
+def find_mult_digits(positions):
+    string = ''.join([str(i) for i in range(positions[-1])])
+    return reduce(lambda x, y: int(x) * int(y), [string[i] for i in positions])
+
+print(find_triplet(1000))
 print(sum_squares(100))
+print(find_last_digits(1000))
+print(find_mult_digits([1, 10, 100, 1000, 10000, 100000, 1000000]))
