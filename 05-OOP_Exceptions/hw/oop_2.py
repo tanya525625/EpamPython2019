@@ -49,9 +49,10 @@ PEP8 соблюдать строго, проверку делаю автотес
 К названием остальных переменных, классов и тд. подходить ответственно -
 давать логичные подходящие имена.
 """
+import time
 import datetime
 from collections import defaultdict
-import time
+
 
 
 class DeadlineError(Exception):
@@ -142,4 +143,4 @@ if __name__ == '__main__':
     opp_teacher.check_homework(result_3)
 
     print(Teacher.homework_done[oop_hw])
-    #Teacher.reset_results()
+    Teacher.reset_results()
