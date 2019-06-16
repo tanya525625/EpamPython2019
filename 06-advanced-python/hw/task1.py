@@ -56,7 +56,6 @@ class PrintableFile:
 
 content = {} 
 curr_dir = os.getcwd()
-print()
 name_of_base_dir = os.path.basename(curr_dir)
 
 for (dirpath, dirnames, filenames) in os.walk(curr_dir):
