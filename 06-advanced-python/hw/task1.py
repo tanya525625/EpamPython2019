@@ -15,6 +15,8 @@ V folder1
 True
 
 """
+import os
+import os.path
 
 
 class PrintableFolder:
@@ -23,7 +25,26 @@ class PrintableFolder:
         self.content = content
 
     def __str__(self):
-        pass
+        path = ''
+        for i, key in enumerate(content.keys()):
+            if key != self.name:
+                path += f"{'|   ' * (i - 1)}|-> V {key} \n"
+            else:
+                path += f'V {key} \n'
+
+
+        dir_count = len(content.keys()) - 1
+        list_of_values = list(content.values())
+        for value in reversed(list_of_values):
+            for i in range(len(value)):
+                path += f"{'|   ' * dir_count}|-> {value[i]}\n"
+            dir_count -= 1
+        return path
+
+    def __contains__(self, file):
+        if file in list(content.values())[0]:
+            return True
+        return False
 
 
 class PrintableFile:
@@ -31,7 +52,19 @@ class PrintableFile:
         self.name = name
 
     def __str__(self):
-        pass
+        return '|-> ' + self.name
 
 
+content = {} 
+curr_dir = os.getcwd()
+print()
+name_of_base_dir =  os.path.basename(curr_dir)
 
+for (dirpath, dirnames, filenames) in os.walk(curr_dir):
+    name_of_dir = os.path.basename(dirpath)
+    content.update({name_of_dir: filenames})
+
+folder = PrintableFolder(name_of_base_dir, content)
+print(folder)
+file = 'task1.py'
+print(file in folder)
