@@ -32,7 +32,6 @@ class PrintableFolder:
             else:
                 path += f'V {key} \n'
 
-
         dir_count = len(content.keys()) - 1
         list_of_values = list(content.values())
         for value in reversed(list_of_values):
@@ -58,7 +57,7 @@ class PrintableFile:
 content = {} 
 curr_dir = os.getcwd()
 print()
-name_of_base_dir =  os.path.basename(curr_dir)
+name_of_base_dir = os.path.basename(curr_dir)
 
 for (dirpath, dirnames, filenames) in os.walk(curr_dir):
     name_of_dir = os.path.basename(dirpath)
