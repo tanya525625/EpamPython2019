@@ -6,11 +6,18 @@
 
 class ShiftDescriptor:
 
+    def __init__(self, shift):
+        self.shift = shift
+        self.value = ''
+
     def __get__(self, instance, owner):
-        pass
+        return self.value
 
     def __set__(self, instance, value):
-        pass
+        new_value = ''
+        for curr_char in value:
+            new_value += chr(ord(curr_char) + self.shift)
+        self.value = new_value
 
 
 class CeasarSipher:

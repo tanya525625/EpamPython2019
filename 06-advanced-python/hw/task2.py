@@ -12,6 +12,14 @@ class Graph:
     def __init__(self, E):
         self.E = E
 
+    def __iter__(self):
+        self.nodes_count = len(self.E.keys())
+
+        return self
+
+     def __next__(self):
+
+
 
 E = {'A': ['B', 'C', 'D'], 'B': ['C'], 'C': [], 'D': ['A']}
 graph = Graph(E)
