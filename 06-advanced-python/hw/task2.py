@@ -9,16 +9,13 @@ E - dict(<V> : [<V>, <V>, ...])
 from queue import Queue
 
 
-class Graph:
-    def __init__(self, E):
+class GraphIterator:
+    def __init__(self, graph):
         self.E = E
-        
-    def __iter__(self):
         self.nodes_count = len(self.E.keys())
         self.processed = [tuple(self.E.keys())[0]]
         self.nodes_queue = Queue()
         self.nodes_queue.put(tuple(self.E.keys())[0])
-        return self
 
     def __next__(self):
         while not self.nodes_queue.empty():
@@ -29,8 +26,20 @@ class Graph:
                     self.processed.append(neighbour_node)
             return curr_node        
         raise StopIteration
-        
+    
+    def __iterator__(self):
+        return self
 
+
+class Graph:
+    def __init__(self, E):
+        self.E = E
+        
+    def __iter__(self):
+        return GraphIterator(self)
+
+   
+        
 E = {'A': ['B', 'C', 'D'], 'B': ['C'], 'C': [], 'D': ['A']}
 graph = Graph(E)
 
