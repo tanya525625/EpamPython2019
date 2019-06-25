@@ -41,8 +41,10 @@ class PrintableFolder:
         return path
 
     def __contains__(self, file):
-        if file in list(content.values())[0]:
-            return True
+        all_folders = list(content.values())
+        for curr_folder in range(len(all_folders)):
+            if file in all_folders[curr_folder]:
+                return True
         return False
 
 
@@ -64,5 +66,5 @@ for (dirpath, dirnames, filenames) in os.walk(curr_dir):
 
 folder = PrintableFolder(name_of_base_dir, content)
 print(folder)
-file = 'task1.py'
+file = 'task4.py'
 print(file in folder)
