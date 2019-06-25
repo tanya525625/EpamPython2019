@@ -16,7 +16,10 @@ class ShiftDescriptor:
     def __set__(self, instance, value):
         new_value = ''
         for curr_char in value:
-            new_value += chr(ord(curr_char) + self.shift)
+            curr_value = chr(ord(curr_char) + self.shift)
+            if ord(curr_value) > 123:
+                curr_value = chr(ord(curr_char) + self.shift - 123 + ord('a'))
+            new_value += curr_value
         self.value = new_value
 
 

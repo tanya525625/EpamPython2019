@@ -10,6 +10,7 @@ from queue import Queue
 
 
 class GraphIterator:
+
     def __init__(self, graph):
         self.E = E
         self.nodes_count = len(self.E.keys())
@@ -32,6 +33,7 @@ class GraphIterator:
 
 
 class Graph:
+    
     def __init__(self, E):
         self.E = E
         
