@@ -28,7 +28,7 @@ class PrintableFolder:
         path = ''
         for i, key in enumerate(self.content.keys()):
             if key != self.name:
-                path += f"{'|   ' * (i - 1)}|-> V {key} \n"
+                path += f"{'|   ' * (i - 1)}|-> V {key}\n"
             else:
                 path += f'V {key} \n'
 

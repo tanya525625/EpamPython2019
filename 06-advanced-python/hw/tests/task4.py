@@ -13,7 +13,7 @@ import task3
 @pytest.fixture
 def task1_resource():
     content = {} 
-    curr_dir = os.getcwd()
+    curr_dir = 'C:\\Users\\User\\Desktop\\Test_folder'
     name_of_base_dir = os.path.basename(curr_dir)
 
     for (dirpath, dirnames, filenames) in os.walk(curr_dir):
@@ -26,12 +26,12 @@ def task1_resource():
 def test_task1(task1_resource):
     name_of_base_dir, content = task1_resource
     folder_to_check = task1.PrintableFolder(name_of_base_dir, content)
-    file_to_check = task1.PrintableFile('task4.py')
-    result = 'V tests\n' \
-            '|-> task1.py\n' \
-            '|-> task2.py\n' \
-            '|-> task3.py\n' \
-            '|-> task4.py\n' 
+    print(str(folder_to_check))
+    file_to_check = task1.PrintableFile('doc1.txt')
+    result = 'V Test_folder\n' \
+            '|-> V folder1\n'  \
+            '|   |-> V folder2\n'  \
+            '|   |-> doc1.txt'
 
     assert str(folder_to_check) == result
     assert file_to_check in folder_to_check
