@@ -25,17 +25,16 @@ def task1_resource():
 
 def test_task1(task1_resource):
     name_of_base_dir, content = task1_resource
-    folder = task1.PrintableFolder(name_of_base_dir, content)
+    folder_to_check = task1.PrintableFolder(name_of_base_dir, content)
     file_to_check = task1.PrintableFile('task4.py')
     result = 'V tests\n' \
             '|-> task1.py\n' \
             '|-> task2.py\n' \
             '|-> task3.py\n' \
-            '|-> task4.py\n' \
-            'True'
+            '|-> task4.py\n' 
 
-    assert str(folder) == result
-    assert file_to_check in folder
+    assert str(folder_to_check) == result
+    assert file_to_check in folder_to_check
 
 
 @pytest.fixture
