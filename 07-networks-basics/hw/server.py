@@ -1,4 +1,5 @@
-import socket, time
+import socket
+import time
 
 host = socket.gethostbyname(socket.gethostname())
 port = 9090
