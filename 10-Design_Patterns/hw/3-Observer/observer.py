@@ -54,7 +54,7 @@ class MyTubeUser:
         self.name = user_name
 
     def update(self, message: str):
-        pass
+        print(message)
 
 class MyTubeChannel:
     playlists = {}
@@ -68,9 +68,30 @@ class MyTubeChannel:
         self.listeners.append(user)
     
     def publish_video(self, video: str):
-        pass
+        for listener in self.listeners:
+            message = f'Dear {listener.name}, there is new video on {self.name} channel: {video}' 
+            listener.update(message)
 
     def publish_playlist(self, name: str, playlist: list):
-        pass
+        for listener in self.listeners:
+            message = f'Dear {listener.name}, there is new video on {self.name} channel: {name}' 
+            listener.update(message)
+    
+
+matt = MyTubeUser('Matt')
+john = MyTubeUser('John')
+erica = MyTubeUser('Erica')
+
+dogs_life = MyTubeChannel('All about dogs', matt)
+dogs_life.subscribe(john)
+dogs_life.subscribe(erica)
+
+dogs_nutrition_videos = ['What do dogs eat?', 'Which Pedigree pack to choose?']
+dogs_nutrition_playlist = {'Dogs nutrition': dogs_nutrition_videos}
+
+for video in dogs_nutrition_videos:
+    dogs_life.publish_video(video)
+
+dogs_life.publish_playlist('Dogs nutrition', dogs_nutrition_playlist)
     
 
