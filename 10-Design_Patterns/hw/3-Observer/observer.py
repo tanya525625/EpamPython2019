@@ -49,3 +49,28 @@ Dear John, there is new playlist on 'All about dogs' channel: 'Dogs nutrition'
 Dear Erica, there is new playlist on 'All about dogs' channel: 'Dogs nutrition'
 
 """
+class MyTubeUser:
+    def __init__(self, user_name: str):
+        self.name = user_name
+
+    def update(self, message: str):
+        pass
+
+class MyTubeChannel:
+    playlists = {}
+    listeners = []
+
+    def __init__(self, channel_name: str, chanel_owner: MyTubeUser):
+        self.name = channel_name
+        self.owner = chanel_owner
+
+    def subscribe(self, user: MyTubeUser):
+        self.listeners.append(user)
+    
+    def publish_video(self, video: str):
+        pass
+
+    def publish_playlist(self, name: str, playlist: list):
+        pass
+    
+
