@@ -18,7 +18,9 @@ class Menu:
         self.menu = menu_dict
 
     def create_dinner(self, day):
-        pass
+        print(self.create_first_courses(day))
+        print(self.create_second_courses(day))
+        print(self.create_drinks(day))
 
     def create_first_courses(self, day):
         pass
@@ -41,11 +43,7 @@ class Vegan_dinner(Menu):
     def create_drinks(self, day):
         return self.menu[day]['drinks']['vegan']
     
-    def create_dinner(self, day):
-        print(self.create_first_courses(day))
-        print(self.create_second_courses(day))
-        print(self.create_drinks(day))
-
+    
 
 class Child_dinner(Menu):
 
@@ -57,11 +55,6 @@ class Child_dinner(Menu):
 
     def create_drinks(self, day):
         return self.menu[day]['drinks']['child']
-    
-    def create_dinner(self, day):
-        print(self.create_first_courses(day))
-        print(self.create_second_courses(day))
-        print(self.create_drinks(day))
 
 
 class China_dinner(Menu):
@@ -75,12 +68,6 @@ class China_dinner(Menu):
     def create_drinks(self, day):
         return self.menu[day]['drinks']['china']
     
-    def create_dinner(self, day):
-        print(self.create_first_courses(day))
-        print(self.create_second_courses(day))
-        print(self.create_drinks(day))
-
-
 
 menu_dict = yaml.load(open('menu.yml', encoding="utf-8"))
 menu = Menu(menu_dict)
