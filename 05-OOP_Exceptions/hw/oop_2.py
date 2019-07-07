@@ -54,12 +54,11 @@ import datetime
 from collections import defaultdict
 
 
-
 class DeadlineError(Exception):
     """You are late"""
 
 
-class person():
+class Person():
     def __init__(self, first_name, last_name):
         self.last_name = last_name
         self.first_name = first_name
@@ -75,16 +74,16 @@ class Homework():
         return datetime.datetime.now() - self.created < self.deadline
 
 
-class Student(person):
+class Student(Person):
     def do_homework(self, hw: Homework, answer: str):
         if hw.is_active():
-            done_hw = HomeworkResult(hw, answer, self)
+            done_hw = HomeworkResult(self, hw, answer)
             return done_hw
         raise DeadlineError
 
 
 class HomeworkResult:
-    def __init__(self, hw: Homework, solution: str, author: Student):
+    def __init__(self, author: Student, hw: Homework, solution: str):
         if not isinstance(hw, Homework):
             raise TypeError('You gave a not Homework object')
         else:
@@ -94,16 +93,18 @@ class HomeworkResult:
         self.solution = solution
 
 
-class Teacher(person):
+class Teacher(Person):
     homework_done = defaultdict(list)
 
-    def create_homework(self, text, deadline):
+    @staticmethod
+    def create_homework(text, deadline):
         return Homework(text, deadline)
-    
-    def check_homework(self, hw_to_check: HomeworkResult):
+
+    @classmethod 
+    def check_homework(cls, hw_to_check: HomeworkResult):
         if len(hw_to_check.solution) > 5:
-            if hw_to_check.homework not in self.homework_done:
-                self.homework_done[hw_to_check.homework].append(hw_to_check)
+            if hw_to_check.homework not in cls.homework_done:
+                cls.homework_done[hw_to_check.homework].append(hw_to_check)
             return True
         return False 
     
